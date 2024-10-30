@@ -3,15 +3,16 @@
 The project is split into frontend/backend folders
 
 execution commands backend: 
-uvicorn database_service:app --host 0.0.0.0 --port 8001
 
-uvicorn event_service:app --host 0.0.0.0 --port 8000
+- uvicorn database_service:app --host 0.0.0.0 --port 8001
 
-py event_simulator.py
+- uvicorn event_service:app --host 0.0.0.0 --port 8000
+
+- py event_simulator.py
 
 execution commands frontend:
 
-ng serve -o
+- ng serve -o
 
 ## Frontend
 The frontend is built using angular and provides a simple management console for simulated event details that is part of the backend script. A user can "complete" a event if they so wish, but this may be overriden by the backend script as it simulates things.
