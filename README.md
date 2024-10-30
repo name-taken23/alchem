@@ -4,10 +4,13 @@ The project is split into frontend/backend folders
 
 execution commands backend: 
 uvicorn database_service:app --host 0.0.0.0 --port 8001
+
 uvicorn event_service:app --host 0.0.0.0 --port 8000
+
 py event_simulator.py
 
 execution commands frontend:
+
 ng serve -o
 
 ## Frontend
