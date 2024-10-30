@@ -1,0 +1,42 @@
+<div class="container">
+  <h2>Event Status Dashboard</h2>
+  <table class="event-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Event Name</th>
+        <th>Status</th>
+        <th>Last Updated</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{ event.id }}</td>
+        <td>{{ event.event_name }}</td>
+        <td>
+          <span [ngClass]="statusClass(event.status)">
+            {{ event.status }}
+          </span>
+        </td>
+        <td>{{ event.last_updated | date: 'short' }}</td>
+        <td>
+          <button class="btn btn-update" (click)="updateEventStatus(event.id, 'Completed')">✔ Complete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination controls -->
+  <div class="pagination">
+    <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+
+    <ng-container *ngFor="let page of getPageRange()">
+      <button (click)="goToPage(page)" [class.active]="currentPage === page">{{ page }}</button>
+    </ng-container>
+
+    <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+
+  <p>Page {{ currentPage }} of {{ totalPages }}</p>
+</div>
